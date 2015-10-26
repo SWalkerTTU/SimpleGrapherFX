@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.embed.swing.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane minHeight="600" minWidth="730.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="simplegrapherfx.SGController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints valignment="CENTER" />
+        <RowConstraints valignment="CENTER" vgrow="NEVER" />
+    </rowConstraints>
+    <children>
+        <AnchorPane GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">  
+            <children>
+                <SwingNode fx:id="graphNode" onMouseDragged="#gnMouseDrag" onMousePressed="#gnMousePress" onScroll="#gnScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane minWidth="730.0" GridPane.rowIndex="1">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                    <children>
+                        <Label text="Coefficients:" />
+                        <TextField fx:id="coeff4" prefWidth="60.0" promptText="x^4" />
+                        <TextField fx:id="coeff3" prefWidth="60.0" promptText="x^3" />
+                        <TextField fx:id="coeff2" prefWidth="60.0" promptText="x^2" />
+                        <TextField fx:id="coeff1" prefWidth="60.0" promptText="x^1" />
+                        <TextField fx:id="coeff0" prefWidth="60.0" promptText="x^0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Button fx:id="graphBtn" mnemonicParsing="false" onAction="#drawGraph" prefHeight="24.0" prefWidth="64.0" text="Graph" />
+                        <Button fx:id="ctrBtn" mnemonicParsing="false" onAction="#centerGraph" prefHeight="24.0" prefWidth="64.0" text="Center" />
+                        <Button fx:id="sqBtn" mnemonicParsing="false" onAction="#squareGraph" prefHeight="24.0" prefWidth="64.0" text="Square" />
+                        <Button fx:id="clrBtn" mnemonicParsing="false" onAction="#clearGraph" prefHeight="24.0" prefWidth="64.0" text="Clear" />
+                    </children>
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
