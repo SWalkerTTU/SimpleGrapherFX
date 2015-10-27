@@ -23,8 +23,8 @@ import javafx.scene.input.ScrollEvent;
  */
 public class SGController implements Initializable {
 
-    Point2D.Double pickUp = new Point2D.Double();
-    Point2D.Double graphCenter = new Point2D.Double();
+    private final Point2D.Double pickUp = new Point2D.Double();
+    private final Point2D.Double graphCenter = new Point2D.Double();
 
     @FXML
     private SwingNode graphNode;
@@ -107,7 +107,7 @@ public class SGController implements Initializable {
     private void gnScroll(ScrollEvent event) {
         double scrollDir = Math.signum(event.getDeltaY());
         double zoomFactor = Math.pow(1.05, scrollDir); // 5% zoom factor
-        
+
         Point2D.Double origin = graphPanel.getOrigin();
 
         double xFactor = (!event.isControlDown() && event.isAltDown()) ? 1.0 : zoomFactor;
@@ -122,10 +122,14 @@ public class SGController implements Initializable {
         graphPanel.setxScale(graphPanel.getxScale() * xFactor);
         graphPanel.setyScale(graphPanel.getyScale() * yFactor);
         graphPanel.repaint();
- 
+
     }
 
     public void setGraphPanel() {
         graphPanel = (SimpleGrapherPanel) graphNode.getContent();
+    }
+
+    public SimpleGrapherPanel getGraphPanel() {
+        return graphPanel;
     }
 }

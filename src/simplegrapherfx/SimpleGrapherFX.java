@@ -5,7 +5,6 @@
  */
 package simplegrapherfx;
 
-import java.awt.geom.Point2D;
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
@@ -19,25 +18,26 @@ import javax.swing.SwingUtilities;
  * @author swalker
  */
 public class SimpleGrapherFX extends Application {
-    
-    SGController controller;
-    
+
+    private SGController controller;
+    double width, height;
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SimpleGrapher.fxml"));
-        
+
         Parent root = (Parent) loader.load();
         controller = loader.getController();
-        
+
         Scene scene = new Scene(root);
         SwingNode sn = (SwingNode) root.lookup("#graphNode");
-        
+
         createSwing(sn);
-        
+
         stage.setScene(scene);
         stage.setTitle("SimpleGrapher");
+
         stage.show();
-        
     }
 
     /**
@@ -46,18 +46,27 @@ public class SimpleGrapherFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    private void createSwing(final SwingNode sn){
-                
+
+    private void createSwing(final SwingNode sn) {
+
         SwingUtilities.invokeLater(() -> {
             SimpleGrapherPanel sgp = new SimpleGrapherPanel();
             sn.setContent(sgp);
-            double width = sn.getBoundsInParent().getWidth() / 2;
-            double height = sn.getBoundsInParent().getHeight() / 2;
-            sgp.setOrigin(new Point2D.Double(width, height));
-            sgp.repaint();
+//            double width = sn.getBoundsInLocal().getWidth() / 2;
+//            double height = sn.getBoundsInParent().getHeight() / 2;
+//            sgp.setOrigin(new Point2D.Double(width, height));
+//            System.out.println(sgp.getOrigin());;
+//            sgp.repaint();
+
+//            System.out.println("width = " + width);
+//            sn.getParent().requestLayout();
+//            sn.getLayoutBounds().getWidth();
+//            System.out.println("width = " + width);;
+//            sn.getParent().requestLayout();
+//            width = sn.getLayoutBounds().getWidth();
+//            System.out.println("width = " + width);
             controller.setGraphPanel();
         });
     }
-    
+
 }
